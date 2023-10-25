@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Contact;
 
+use App\Helpers\DateHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -29,6 +30,7 @@ class ContactSearch extends JsonResource
             'initials' => $this->getInitials(),
             'is_me' => $this->isMe(),
             'is_starred' => $this->is_starred,
+            'date' => DateHelper::getTimestamp($this->birthdate),
             'information' => [
                 'avatar' => [
                     'url' => $this->getAvatarUrl(),
