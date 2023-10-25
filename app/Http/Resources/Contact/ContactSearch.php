@@ -30,8 +30,12 @@ class ContactSearch extends JsonResource
             'initials' => $this->getInitials(),
             'is_me' => $this->isMe(),
             'is_starred' => $this->is_starred,
-            'date' => DateHelper::getTimestamp($this->birthdate),
             'information' => [
+                'birthdate' => [
+                    'is_age_based' => (is_null($this->birthdate) ? null : (bool) $this->birthdate->is_age_based),
+                    'is_year_unknown' => (is_null($this->birthdate) ? null : (bool) $this->birthdate->is_year_unknown),
+                    'date' => DateHelper::getTimestamp($this->birthdate),
+                ],
                 'avatar' => [
                     'url' => $this->getAvatarUrl(),
                     'source' => $this->avatar_source,
