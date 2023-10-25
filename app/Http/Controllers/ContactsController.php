@@ -703,6 +703,7 @@ class ContactsController extends Controller
             app(UpdateViewPreference::class)->execute([
                 'account_id' => $user->account_id,
                 'user_id' => $user->id,
+                'date_of_birth' => '1900-01-01',
                 'preference' => $sort,
             ]);
         }
